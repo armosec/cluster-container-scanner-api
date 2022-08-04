@@ -30,7 +30,7 @@ type ESLayer struct {
 }
 
 type LayerInfo struct {
-	CreatedBy   string
+	CreatedBy   string `json:"createdBy"`
 	CreatedTime *time.Time
 }
 

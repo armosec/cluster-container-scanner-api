@@ -17,6 +17,7 @@ type CommonContainerVulnerabilityResult struct {
 	Timestamp         int64                                    `json:"timestamp"`
 	IsLastScan        int                                      `json:"isLastScan"`
 	IsFixed           int                                      `json:"isFixed"`
+	IsRelevant        bool                                     `json:"isRelevant"`
 	IntroducedInLayer string                                   `json:"layerHash"`
 	RelevantLinks     []string                                 `json:"links"`                       // shitty SE practice
 	RelatedExceptions []armotypes.VulnerabilityExceptionPolicy `json:"relatedExceptions,omitempty"` // configured in portal
@@ -106,11 +107,9 @@ type CommonContainerScanSummaryResult struct {
 
 	Vulnerabilities []ShortVulnerabilityResult `json:"vulnerabilities"`
 
-
-	ImageSignatureValid           bool                  `json:"imageSignatureValid,omitempty"`
-    ImageHasSignature             bool                  `json:"imageHasSignature,omitempty"`
-    ImageSignatureValidationError string                `json:"imageSignatureValidationError,omitempty"`
-
+	ImageSignatureValid           bool   `json:"imageSignatureValid,omitempty"`
+	ImageHasSignature             bool   `json:"imageHasSignature,omitempty"`
+	ImageSignatureValidationError string `json:"imageSignatureValidationError,omitempty"`
 }
 
 func (summary *CommonContainerScanSummaryResult) Validate() bool {
